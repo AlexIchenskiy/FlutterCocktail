@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -118,11 +119,11 @@ class HomeWidget extends StatelessWidget {
     return Column (
       children: const <Widget>[
         Expanded(
-          flex: 2,
+          flex: 3,
           child: HomeSearch(),
         ),
         Expanded(
-          flex: 14,
+          flex: 16,
           child: HomeList(),
         ),
       ],
@@ -138,6 +139,22 @@ class HomeSearch extends StatelessWidget {
     return (
       Container(
         color: Colors.blueGrey.shade700,
+        padding: const EdgeInsets.all(10.0),
+        child:
+          DropdownSearch<String>(
+            mode: Mode.MENU,
+            items: ["Beer", "Gin", "Rum", "Tequila", "Vodka"],
+            onChanged: print,
+            selectedItem: "Rum",
+            popupBackgroundColor: Colors.blueGrey.shade300,
+            dropdownSearchDecoration: const InputDecoration(
+              labelText: "Ingredients",
+              hintText: "Ingredient for cocktails",
+              labelStyle: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+          ),
       )
     );
   }
