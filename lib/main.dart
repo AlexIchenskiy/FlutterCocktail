@@ -110,17 +110,21 @@ class HomeWidget extends StatelessWidget {
     return Container (
       child: Column(
         children: <Widget>[
-          Container(
-            color: Colors.pink.shade100,
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.1,
-            child: Text("Hello"),
+          Expanded(
+            flex: 2,
+            child: Container(
+              color: Colors.pink.shade100,
+              width: double.infinity,
+              child: const Text("Hello"),
+            ),
           ),
-          Container(
-            color: Colors.pink.shade100,
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.667,
-            child: Text("Hello"),
+          Expanded(
+            flex: 8,
+            child: Container(
+              color: Colors.pink.shade100,
+              width: double.infinity,
+              child: const Text("Hello"),
+            ),
           ),
         ],
       ),
