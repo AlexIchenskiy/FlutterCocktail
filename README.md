@@ -1,6 +1,6 @@
-# hello_flutter
+# FlutterCocktail
 
-A new Flutter project.
+A Flutter application designed to sort drinks and cocktails powered by ThecocktailDB.
 
 ## Getting Started
 
