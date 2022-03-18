@@ -8,6 +8,7 @@ void main() {
   runApp(
     const MaterialApp(
       title: 'Flutter Cocktail',
+      debugShowCheckedModeBanner: false,
       home: Main(),
     )
   );
@@ -20,6 +21,7 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: "Flutter Cocktail",
+      debugShowCheckedModeBanner: false,
       home: MyStatefulWidget(),
     );
   }
@@ -37,10 +39,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+    Favorite(),
     HomeWidget(),
     Text(
       'Index 2: School',
@@ -58,24 +57,30 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Cocktail',
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter Cocktail'),
-          backgroundColor: Colors.pink.shade500,
+          toolbarHeight: 75,
+          title: const Text(
+            'Flutter Cocktail',
+            style: TextStyle(
+              fontSize: 24,
+            ),
+          ),
+          backgroundColor: Colors.blueGrey.shade900,
           centerTitle: true,
         ),
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.pink.shade500,
+          backgroundColor: Colors.blueGrey.shade900,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.favorite,
               ),
               label: 'Favorite',
-              backgroundColor: Colors.white,
             ),
             BottomNavigationBarItem(
               icon: Icon(
@@ -91,11 +96,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ),
           ],
           currentIndex: _selectedIndex,
-          unselectedItemColor: Colors.white,
-          selectedItemColor: Colors.cyan.shade300,
+          unselectedItemColor: Colors.blueGrey.shade300,
+          selectedItemColor: Colors.pink.shade300,
           selectedFontSize: 18,
           unselectedFontSize: 16,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
           onTap: _onItemTapped,
+          iconSize: 36,
         ),
       ),
     );
@@ -107,27 +115,56 @@ class HomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container (
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 2,
-            child: Container(
-              color: Colors.pink.shade100,
-              width: double.infinity,
-              child: const Text("Hello"),
-            ),
-          ),
-          Expanded(
-            flex: 8,
-            child: Container(
-              color: Colors.pink.shade100,
-              width: double.infinity,
-              child: const Text("Hello"),
-            ),
-          ),
-        ],
-      ),
+    return Column (
+      children: const <Widget>[
+        Expanded(
+          flex: 2,
+          child: HomeSearch(),
+        ),
+        Expanded(
+          flex: 14,
+          child: HomeList(),
+        ),
+      ],
+    );
+  }
+}
+
+class HomeSearch extends StatelessWidget {
+  const HomeSearch({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return (
+      Container(
+        color: Colors.blueGrey.shade700,
+      )
+    );
+  }
+}
+
+class HomeList extends StatelessWidget {
+  const HomeList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return (
+      Container(
+        color: Colors.blueGrey.shade300,
+      )
+    );
+  }
+}
+
+class Favorite extends StatelessWidget {
+  const Favorite({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return (
+        Container(
+          color: Colors.blueGrey.shade300,
+        )
     );
   }
 }
